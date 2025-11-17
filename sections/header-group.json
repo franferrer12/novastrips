@@ -23,13 +23,12 @@
         "announcement_2"
       ],
       "settings": {
-        "padding_top": 0,
-        "padding_bottom": 0,
+        "padding_top": 10,
+        "padding_bottom": 10,
         "bg_color": "#000000",
         "text_color": "#ffffff",
         "link_color": "#ffffff",
-        "link_hover_color": "#ffffff",
-        "autoplay_speed": 7000
+        "link_hover_color": "#ffffff"
       }
     },
     "header": {

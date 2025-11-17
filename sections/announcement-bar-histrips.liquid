@@ -1,68 +1,44 @@
 <style>
-  :root {
-    --ANNOUNCEMENT-HEIGHT-DESKTOP: max(calc(var(--font-2) * var(--FONT-ADJUST-BODY) * var(--line-height-normal)), 36px);
-    --ANNOUNCEMENT-HEIGHT-MOBILE: max(calc(var(--font-2) * var(--FONT-ADJUST-BODY) * var(--line-height-normal)), 36px);
+  .announcement-bar-{{ section.id }} {
+    background: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .announcement-bar-{{ section.id }} a {
+    color: {{ section.settings.link_color }};
+    text-decoration: none;
+  }
+
+  .announcement-bar-{{ section.id }} a:hover {
+    color: {{ section.settings.link_hover_color }};
+  }
+
+  .announcement-bar-{{ section.id }} .announcement__message {
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  .announcement-bar-{{ section.id }} strong {
+    font-weight: 700;
   }
 </style>
 
-<div
-  id="Announcement--{{ section.id }}"
-  class="announcement__wrapper announcement__wrapper--top"
-  data-announcement-wrapper=""
-  data-section-id="{{ section.id }}"
-  data-section-type="announcement"
-  style="
-    --PT: {{ section.settings.padding_top }}px;
-    --PB: {{ section.settings.padding_bottom }}px;
-    --ticker-direction: ticker-rtl;
-    --bg: {{ section.settings.bg_color }};
-    --bg-transparent: {{ section.settings.bg_color | color_modify: 'alpha', 0 }};
-    --text: {{ section.settings.text_color }};
-    --link: {{ section.settings.link_color }};
-    --link-hover: {{ section.settings.link_hover_color }};
-    --text-size: var(--font-2);
-    --text-align: center;
-    --justify-content: center;
-  "
->
-  <announcement-bar class="announcement__bar-outer" style="--padding-scrolling: 10px;">
-    <div class="announcement__bar-holder announcement__bar-holder--slider">
-      <div
-        class="announcement__slider flickity-enabled is-draggable is-fade"
-        data-slider=""
-        data-options='{"fade": true, "pageDots": false, "adaptiveHeight": false, "autoPlay": {{ section.settings.autoplay_speed }}, "prevNextButtons": false, "draggable": ">1"}'
-      >
-        <div class="flickity-viewport">
-          <div class="flickity-slider">
-            {% for block in section.blocks %}
-              <ticker-bar
-                class="announcement__slide announcement__bar flickity-cell{% if forloop.first %} is-selected{% endif %}"
-                data-slide="{{ block.id }}"
-                data-slide-index="{{ forloop.index0 }}"
-                data-block-id="{{ block.id }}"
-                {{ block.shopify_attributes }}
-              >
-                <div data-ticker-frame="" class="announcement__message">
-                  <div data-ticker-scale="" class="announcement__scale">
-                    <div data-ticker-text="" class="announcement__text">
-                      <div class="body-size-2">
-                        {{ block.settings.text }}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div data-ticker-text="" class="announcement__text ticker__comparitor">
-                  <div class="body-size-2">
-                    {{ block.settings.text }}
-                  </div>
-                </div>
-              </ticker-bar>
-            {% endfor %}
-          </div>
-        </div>
+<div class="announcement-bar-{{ section.id }}" data-section-id="{{ section.id }}">
+  {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+      <div class="announcement__message" {{ block.shopify_attributes }}>
+        {{ block.settings.text }}
       </div>
+    {% endfor %}
+  {% else %}
+    <div class="announcement__message">
+      <p><strong>Welcome to our store!</strong></p>
     </div>
-  </announcement-bar>
+  {% endif %}
 </div>
 
 {% schema %}
@@ -77,7 +53,7 @@
       "step": 1,
       "unit": "px",
       "label": "Padding Top",
-      "default": 0
+      "default": 10
     },
     {
       "type": "range",
@@ -87,7 +63,7 @@
       "step": 1,
       "unit": "px",
       "label": "Padding Bottom",
-      "default": 0
+      "default": 10
     },
     {
       "type": "color",
@@ -112,16 +88,6 @@
       "id": "link_hover_color",
       "label": "Link Hover Color",
       "default": "#ffffff"
-    },
-    {
-      "type": "range",
-      "id": "autoplay_speed",
-      "min": 3000,
-      "max": 15000,
-      "step": 1000,
-      "unit": "ms",
-      "label": "Autoplay Speed",
-      "default": 7000
     }
   ],
   "blocks": [
@@ -146,12 +112,6 @@
           "type": "text",
           "settings": {
             "text": "<p><strong>BLACK FRIDAY: 30% OFF + WIN 20,000$</strong></p>"
-          }
-        },
-        {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>30-day </strong>money-back guarantee</p>"
           }
         }
       ]
