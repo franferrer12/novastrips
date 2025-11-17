@@ -1,16 +1,49 @@
 <h1 align="center" style="position: relative;">
   <br>
-    <img src="./assets/shoppy-x-ray.svg" alt="logo" width="200">
+  NovaStrips Theme
   <br>
-  Shopify Skeleton Theme
+  <small>Based on HiStrips Design</small>
 </h1>
 
-A minimal, carefully structured Shopify theme designed to help you quickly get started. Designed with modularity, maintainability, and Shopify's best practices in mind.
+A complete Shopify theme replicating the HiStrips.com website design. Built with Shopify 2.0 architecture, featuring 10+ custom sections, complete CSS styling (462KB), and comprehensive documentation.
 
 <p align="center">
   <a href="./LICENSE.md"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
   <a href="./actions/workflows/ci.yml"><img alt="CI" src="https://github.com/Shopify/skeleton-theme/actions/workflows/ci.yml/badge.svg"></a>
 </p>
+
+## Features
+
+### HiStrips Sections Included
+
+This theme includes 10 custom sections replicating HiStrips.com:
+
+- **announcement-bar-histrips** - Rotating announcement bar with Flickity slider
+- **header-histrips** - Centered logo header with navigation
+- **hero-histrips** - Main hero section with responsive images
+- **hero-secondary-histrips** - Additional hero sections
+- **logo-cloud-histrips** - "WORN BY THE BEST" infinite carousel
+- **product-grid-histrips** - Responsive product grid (4/2/2 columns)
+- **features-histrips** - Features grid with icons
+- **reviews-histrips** - Customer testimonials with ratings
+- **rich-text-histrips** - "HiStrips Inside" content section
+- **footer-histrips** - Footer with newsletter and social links
+
+### Complete Styling
+
+- **histrips-complete.css** (462KB) - Complete original CSS
+- 69 CSS variables for customization
+- 43 keyframe animations
+- Mobile-first responsive design (750px breakpoint)
+- BEM methodology
+
+### Documentation
+
+Comprehensive documentation included:
+- CSS_README.md - Complete CSS documentation index
+- CSS_ANALYSIS.md - Technical analysis (69 variables, 43 animations)
+- QUICK_START.md - Quick setup guide
+- And 8 more detailed documentation files
 
 ## Getting started
 

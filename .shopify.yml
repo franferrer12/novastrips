@@ -1,0 +1,27 @@
+# Shopify GitHub Integration Configuration
+# This file enables automatic syncing between GitHub and Shopify themes
+
+# Theme name that will appear in Shopify Admin
+theme:
+  name: "NovaStrips HiStrips Theme"
+
+# Store configuration
+# You can add your store handle here after connecting
+store: nova-strips-2.myshopify.com
+
+# Branch configuration
+branches:
+  main:
+    theme: live
+
+# File ignore patterns (additional to .shopifyignore)
+ignore:
+  - "*.md"
+  - "*.txt"
+  - "temp/**"
+  - ".git/**"
+  - ".github/**"
+  - "node_modules/**"
+
+# Auto-publish settings
+auto_publish: false
