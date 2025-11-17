@@ -1,0 +1,54 @@
+<style>
+  .simple-text-{{ section.id }} {
+    padding: 60px 20px;
+    text-align: center;
+    background: #f9f9f9;
+  }
+
+  .simple-text-{{ section.id }} h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    color: #000;
+  }
+
+  .simple-text-{{ section.id }} p {
+    font-size: 18px;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+</style>
+
+<div class="simple-text-{{ section.id }}">
+  <h1>{{ section.settings.title }}</h1>
+  <div class="simple-text__content">
+    {{ section.settings.text }}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Simple Text Test",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Welcome to NovaStrips"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>The ultimate performance solution for top athletes. Breathe better, sleep deeper, perform stronger.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Simple Text Test"
+    }
+  ]
+}
+{% endschema %}

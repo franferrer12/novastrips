@@ -1,5 +1,12 @@
 {
   "sections": {
+    "test_text": {
+      "type": "simple-text-test",
+      "settings": {
+        "title": "NovaStrips - Performance Breathing Strips",
+        "text": "<p><strong>Welcome!</strong> This is a test to ensure the theme is loading correctly. If you can see this text, the theme is working.</p>"
+      }
+    },
     "hero_1": {
       "type": "hero-secondary-histrips",
       "settings": {
@@ -208,6 +215,7 @@
     }
   },
   "order": [
+    "test_text",
     "hero_1",
     "logo_cloud",
     "product_grid",
