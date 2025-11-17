@@ -1,45 +1,5 @@
 {
   "sections": {
-    "announcement": {
-      "type": "announcement-bar-histrips",
-      "blocks": {
-        "announcement_1": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>BLACK FRIDAY: 30% OFF + WIN 20,000$</strong></p>"
-          }
-        },
-        "announcement_2": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>30-day</strong> money-back guarantee</p>"
-          }
-        }
-      },
-      "block_order": [
-        "announcement_1",
-        "announcement_2"
-      ],
-      "settings": {
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "bg_color": "#000000",
-        "text_color": "#ffffff",
-        "link_color": "#ffffff",
-        "link_hover_color": "#ffffff",
-        "autoplay_speed": 7000
-      }
-    },
-    "header": {
-      "type": "header-histrips",
-      "settings": {
-        "logo_width_desktop": 80,
-        "logo_width_mobile": 120,
-        "menu": "main-menu",
-        "sticky_header": true,
-        "highlight_color": "#d02e2e"
-      }
-    },
     "hero_1": {
       "type": "hero-secondary-histrips",
       "settings": {
@@ -121,7 +81,7 @@
         "products_limit": 8,
         "columns_desktop": 4,
         "columns_medium": 2,
-        "columns_mobile": 2,
+        "columns_mobile": "2",
         "show_reviews": true
       }
     },
@@ -233,7 +193,7 @@
     "rich_text": {
       "type": "rich-text-histrips",
       "settings": {
-        "title": "HiStrips Inside",
+        "title": "NovaStrips Inside",
         "title_size": "heading-size-8",
         "text": "<p>More than just a simple bandaid. Designed with the strongest physical action layer and stickiest hypoallergenic adhesive in the market for maximum durability & comfort.</p>",
         "text_size": "body-size-3",
@@ -245,66 +205,9 @@
         "padding_bottom_desktop": 0,
         "block_padding_bottom": 26
       }
-    },
-    "footer": {
-      "type": "footer-histrips",
-      "blocks": {
-        "footer_menu_1": {
-          "type": "menu",
-          "settings": {
-            "title": "Shop",
-            "menu": "footer"
-          }
-        },
-        "footer_menu_2": {
-          "type": "menu",
-          "settings": {
-            "title": "Support",
-            "menu": "footer"
-          }
-        },
-        "footer_text": {
-          "type": "text",
-          "settings": {
-            "title": "About HiStrips",
-            "text": "<p>HiStrips offers the ultimate performance solution for top athletes, designed to boost endurance and enhance recovery.</p>"
-          }
-        },
-        "footer_newsletter": {
-          "type": "newsletter",
-          "settings": {
-            "title": "Subscribe to our newsletter",
-            "text": "<p>Get the latest updates on products and exclusive offers.</p>",
-            "placeholder": "Enter your email",
-            "button_label": "Subscribe"
-          }
-        }
-      },
-      "block_order": [
-        "footer_menu_1",
-        "footer_menu_2",
-        "footer_text",
-        "footer_newsletter"
-      ],
-      "settings": {
-        "bg_color": "#000000",
-        "text_color": "#ffffff",
-        "link_color": "#ffffff",
-        "link_hover_color": "rgba(255, 255, 255, 0.7)",
-        "border_color": "#2e2e2e",
-        "button_bg_color": "#696969",
-        "button_text_color": "#ffffff",
-        "padding_top": 80,
-        "padding_bottom": 40,
-        "columns_desktop": 4,
-        "copyright_text": "© 2024 HiStrips. All rights reserved.",
-        "show_social": true
-      }
     }
   },
   "order": [
-    "announcement",
-    "header",
     "hero_1",
     "logo_cloud",
     "product_grid",
@@ -312,7 +215,6 @@
     "features",
     "hero_3",
     "reviews",
-    "rich_text",
-    "footer"
+    "rich_text"
   ]
 }
