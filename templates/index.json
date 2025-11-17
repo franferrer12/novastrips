@@ -1,18 +1,14 @@
 {
   "sections": {
-    "test_text": {
-      "type": "simple-text-test",
-      "settings": {
-        "title": "NovaStrips - Performance Breathing Strips",
-        "text": "<p><strong>Welcome!</strong> This is a test to ensure the theme is loading correctly. If you can see this text, the theme is working.</p>"
-      }
-    },
-    "hero_1": {
+    "hero_main": {
       "type": "hero-secondary-histrips",
       "settings": {
+        "image_desktop": null,
+        "image_mobile": null,
+        "image_alt": "NovaStrips - Boost Performance & Live Healthier",
         "link": "/collections/all",
-        "aspect_ratio_desktop": 3.5,
-        "aspect_ratio_mobile": 1.3,
+        "aspect_ratio_desktop": 2.5,
+        "aspect_ratio_mobile": 1.2,
         "lazy_load": false
       }
     },
@@ -95,33 +91,37 @@
     "hero_2": {
       "type": "hero-secondary-histrips",
       "settings": {
+        "image_desktop": null,
+        "image_mobile": null,
+        "image_alt": "Performance Enhancement",
+        "link": "",
         "aspect_ratio_desktop": 3.5,
         "aspect_ratio_mobile": 1.3,
         "lazy_load": true
       }
     },
-    "features": {
+    "how_it_works": {
       "type": "features-histrips",
       "blocks": {
         "feature_1": {
           "type": "feature",
           "settings": {
-            "title": "Premium Quality",
-            "text": "<p>Made with the highest quality materials for maximum durability.</p>"
+            "title": "Apply & Breathe",
+            "text": "<p>Simply apply the strip to your nose. Feel instant improvement in airflow for better performance.</p>"
           }
         },
         "feature_2": {
           "type": "feature",
           "settings": {
-            "title": "Enhanced Performance",
-            "text": "<p>Designed to boost your athletic performance and endurance.</p>"
+            "title": "Train Harder",
+            "text": "<p>Enhanced oxygen intake helps you push your limits and maximize your training sessions.</p>"
           }
         },
         "feature_3": {
           "type": "feature",
           "settings": {
-            "title": "Hypoallergenic",
-            "text": "<p>Safe for sensitive skin with our hypoallergenic adhesive.</p>"
+            "title": "Recover Better",
+            "text": "<p>Better breathing during sleep means faster recovery and improved performance the next day.</p>"
           }
         }
       },
@@ -131,8 +131,8 @@
         "feature_3"
       ],
       "settings": {
-        "section_title": "",
-        "background_color": "#fafafa",
+        "section_title": "How It Works",
+        "background_color": "#fcfafa",
         "padding_top_mobile": 40,
         "padding_top_desktop": 60,
         "padding_bottom_mobile": 40,
@@ -147,6 +147,10 @@
     "hero_3": {
       "type": "hero-secondary-histrips",
       "settings": {
+        "image_desktop": null,
+        "image_mobile": null,
+        "image_alt": "Athletes in Action",
+        "link": "",
         "aspect_ratio_desktop": 3.5,
         "aspect_ratio_mobile": 1.3,
         "lazy_load": true
@@ -202,7 +206,7 @@
       "settings": {
         "title": "NovaStrips Inside",
         "title_size": "heading-size-8",
-        "text": "<p>More than just a simple bandaid. Designed with the strongest physical action layer and stickiest hypoallergenic adhesive in the market for maximum durability & comfort.</p>",
+        "text": "<p>More than just a simple strip. Designed with the strongest physical action layer and stickiest hypoallergenic adhesive in the market for maximum durability & comfort.</p>",
         "text_size": "body-size-3",
         "text_align": "center",
         "background_color": "#fafafa",
@@ -215,12 +219,11 @@
     }
   },
   "order": [
-    "test_text",
-    "hero_1",
+    "hero_main",
     "logo_cloud",
     "product_grid",
     "hero_2",
-    "features",
+    "how_it_works",
     "hero_3",
     "reviews",
     "rich_text"

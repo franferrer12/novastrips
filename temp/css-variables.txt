@@ -1,0 +1,98 @@
+============================================================================== */:root{
+--bg: var(--COLOR-BG);--bg-accent: var(--COLOR-BG-SECONDARY);--bg-accent-lighten: var(--COLOR-BG-SECONDARY-LIGHTEN);--text-dark: var(--COLOR-TEXT-DARK);--text: var(--COLOR-TEXT);--text-light: var(--COLOR-TEXT-LIGHT);--text-a35: var(--COLOR-A35);--text-a70: var(--COLOR-A70);--text-a75: var(--COLOR-A75);--text-black: #000;--text-white: #FFF;--link: var(--COLOR-LINK);--link-hover: var(--COLOR-LINK-HOVER);--border: var(--COLOR-BORDER);--hairline: var(--COLOR-BORDER-HAIRLINE);--sale-bg: var(--COLOR-SALE-BG);--sale-text: var(--COLOR-SALE-TEXT);--sale-text-secondary: var(--COLOR-SALE-TEXT-SECONDARY);--contrast: #000;--primary: var(--COLOR-PRIMARY);--primary-hover: var(--COLOR-PRIMARY-HOVER);--primary-fade: var(--COLOR-PRIMARY-FADE);--primary-light: var(--COLOR-PRIMARY-LIGHT);--primary-opposite: var(--COLOR-PRIMARY-OPPOSITE);--success: #56AD6A;--success-bg: rgba(86, 173, 106, .2);--error: var(--COLOR-ERROR);--error-bg: var(--COLOR-ERROR-BG);--header-overlay-color: transparent}
+.palette--contrast{
+--text: #000;--text-light: #000;--text-dark: #000;--bg: #FFF}
+.palette--primary{
+--text: var(--COLOR-PRIMARY);--text-light: var(--COLOR-PRIMARY);--text-dark: var(--COLOR-PRIMARY);--bg: var(--COLOR-PRIMARY-OPPOSITE)}
+.palette--contrast--dark{
+--text: #FFF;--text-light: #FFF;--text-dark: #F7F7F7;--bg: #000}
+/*! Flickity v3.0.0
+https://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{
+position:relative}
+.flickity-enabled:focus{
+outline:none}
+.flickity-viewport{
+overflow:hidden;position:relative;height:100%}
+.is-initialized .flickity-viewport{
+transition:height .3s}
+.flickity-slider{
+position:absolute;left:0;width:100%;height:100%;touch-action:pan-y;-webkit-user-select:none;-webkit-user-drag:none}
+.flickity-slider>.flickity-cell{
+position:absolute}
+.flickity-viewport{
+touch-action:pan-y}
+.flickity-cell{
+position:absolute;left:0}
+.flickity-enabled.is-draggable{
+-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+.flickity-enabled.is-draggable .flickity-viewport{
+cursor:move;cursor:grab}
+.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{
+cursor:grabbing}
+.flickity-button{
+position:absolute;border:none;background:none;color:inherit}
+.flickity-button-hide .flickity-button{
+opacity:0;visibility:hidden;pointer-events:none}
+.flickity-button:hover{
+cursor:pointer}
+body:not(.is-focused) .flickity-button:focus{
+outline:none}
+.flickity-button:active{
+opacity:1}
+.flickity-button:disabled{
+opacity:0;cursor:auto;visibility:hidden;pointer-events:none}
+.flickity-prev-next-button{
+--icon-size: 28px;--btn-size: 40px;top:50%;width:var(--btn-size);height:var(--btn-size);padding:0;background-color:var(--COLOR-BG);border-radius:var(--RADIUS);box-shadow:0 2px 6px #0000000a,0 2px 2px #00000005;margin-top:calc(var(--btn-size) / -2)}
+.editorial__link a.btn{
+border:none;background-color:transparent}
+.product__thumb.is-active img{
+border:1px solid #BDBDBD;border-radius:3px}
+.product__thumb.is-active:after{
+display:none}
+.mobe_back{
+display:flex;justify-content:center;gap:5px;align-items:center}
+.mobe_back img{
+width:14px;height:14px;line-height:14px}
+.mobe_back h4{
+font-size:11px;font-weight:400}
+.mobe_back h4 strong{
+font-weight:700}
+.red_part_pdp h4,.red_part_pdp p{
+color:#a50000;margin:0}
+.template-product h1.product__title{
+font-weight:700;font-size:36px;line-height:120%;letter-spacing:-1px;vertical-align:middle;text-transform:uppercase}
+.red_part_pdp{
+display:flex;align-items:flex-start;border:3px dashed #A40001;background-color:#ffdce2;height:59;gap:10px;opacity:1;border-radius:7px;padding:10px;border-width:1px;border-style:dashed}
+.red_part_pdp h4{
+font-size:13px;font-weight:700;margin-bottom:5px}
+.red_part_pdp p{
+font-size:12px;font-weight:400}
+.icon_box{
+display:flex;align-items:center;justify-content:center}
+.icon_box img{
+display:block}
+.product-upsell__holder__title strong{
+font-weight:700}
+.upsell-swiper .product-upsell__btn{
+width:100%;background-color:#1e1e1e;color:#fff}
+.upsell-swiper .product-upsell form{
+width:120px}
+.upsell-swiper .product-upsell__title{
+font-size:15px;font-weight:700;color:#151718;line-height:15px;margin-bottom:0}
+.video-heading-template--25864282407256__ss_product_vidoes_4KXEYD strong{
+font-weight:700}
+.upsell-swiper .product-upsell__price{
+font-size:12px;margin:0;line-height:24px;font-weight:400}
+.product-upsell .sale .new-price{
+color:#151718}
+.product-upsell .old-price{
+color:#151718a6}
+.upsell-swiper .product-upsell{
+justify-content:center;align-items:center;border-radius:10px}
+.upsell-swiper .product-upsell__content{
+padding:10px 20px}
+.upsell-swiper .swiper-wrapper{
+margin-bottom:15px}
+.product__upsell .product-upsell__holder__title{
+font-size:20px;margin-bottom:16px}
