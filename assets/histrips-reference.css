@@ -1,0 +1,577 @@
+/* ============================================================================
+   HISTRIPS CSS REFERENCE - Extracted Key Sections
+   Original file: theme.css (462KB)
+   Generated: 2025-11-17
+   
+   This file contains the most important CSS sections for quick reference
+============================================================================ */
+
+/* ============================================================================
+   1. CSS VARIABLES (ROOT)
+============================================================================ */
+
+:root {
+  --bg: var(--COLOR-BG);
+  --bg-accent: var(--COLOR-BG-SECONDARY);
+  --bg-accent-lighten: var(--COLOR-BG-SECONDARY-LIGHTEN);
+  --text-dark: var(--COLOR-TEXT-DARK);
+  --text: var(--COLOR-TEXT);
+  --text-light: var(--COLOR-TEXT-LIGHT);
+  --text-a35: var(--COLOR-A35);
+  --text-a70: var(--COLOR-A70);
+  --text-a75: var(--COLOR-A75);
+  --text-black: #000;
+  --text-white: #FFF;
+  --link: var(--COLOR-LINK);
+  --link-hover: var(--COLOR-LINK-HOVER);
+  --border: var(--COLOR-BORDER);
+  --hairline: var(--COLOR-BORDER-HAIRLINE);
+  --sale-bg: var(--COLOR-SALE-BG);
+  --sale-text: var(--COLOR-SALE-TEXT);
+  --sale-text-secondary: var(--COLOR-SALE-TEXT-SECONDARY);
+  --contrast: #000;
+  --primary: var(--COLOR-PRIMARY);
+  --primary-hover: var(--COLOR-PRIMARY-HOVER);
+  --primary-fade: var(--COLOR-PRIMARY-FADE);
+  --primary-light: var(--COLOR-PRIMARY-LIGHT);
+  --primary-opposite: var(--COLOR-PRIMARY-OPPOSITE);
+  --success: #56AD6A;
+  --success-bg: rgba(86, 173, 106, .2);
+  --error: var(--COLOR-ERROR);
+  --error-bg: var(--COLOR-ERROR-BG);
+}
+
+/* ============================================================================
+   2. BUTTON SYSTEM
+============================================================================ */
+
+.btn {
+  border:none;
+  background-color:transparent
+}
+
+.btn {
+  text-transform:uppercase;
+  display:flex;
+  gap:4px;
+  padding:14px 0
+}
+
+.btn__text {
+  line-height:0;
+  font-weight:600;
+  font-size:20px
+}
+
+.btn__error {
+  top:50%;
+  left:50%;
+  position:absolute
+}
+
+.btn__text {
+  display:block;
+  height:100%;
+  transform:translateZ(0)
+}
+
+.btn--secondary {
+  --btn-border: var(--BTN-SECONDARY-BORDER-COLOR);
+  --btn-bg: var(--BTN-SECONDARY-BG-COLOR);
+  --btn-text: var(--BTN-SECONDARY-TEXT-COLOR)
+}
+
+.btn--outline {
+  --btn-border: var(--BTN-SECONDARY-BORDER-COLOR);
+  --btn-bg: transparent;
+  --btn-text: var(--BTN-SECONDARY-BORDER-COLOR);
+  --btn-border-hover: var(--BTN-SECONDARY-BORDER-COLOR);
+  --btn-bg-hover: transparent;
+  --btn-text-hover: var(--BTN-SECONDARY-BORDER-COLOR)
+}
+
+.btn--text {
+  --btn-text: var(--BTN-SECONDARY-BORDER-COLOR);
+  --btn-text-hover: var(--BTN-SECONDARY-BORDER-COLOR)
+}
+
+.btn--white {
+  --btn-border: var(--TEXT-BTN-BORDER-WHITE);
+  --btn-bg: var(--TEXT-BTN-BG-WHITE);
+  --btn-text: var(--TEXT-BTN-WHITE)
+}
+
+.btn--outline {
+  --btn-border: #FFF;
+  --btn-bg: transparent;
+  --btn-text: #FFF;
+  --btn-border-hover: #FFF;
+  --btn-bg-hover: transparent;
+  --btn-text-hover: #FFF
+}
+
+.btn--text {
+  --btn-text: #FFF;
+  --btn-text-hover: #FFF
+}
+
+.btn--black {
+  --btn-border: var(--TEXT-BTN-BORDER-BLACK);
+  --btn-bg: var(--TEXT-BTN-BG-BLACK);
+  --btn-text: var(--TEXT-BTN-BLACK)
+}
+
+.btn--outline {
+  --btn-border: #000;
+  --btn-bg: transparent;
+  --btn-text: #000;
+  --btn-border-hover: #000;
+  --btn-bg-hover: transparent;
+  --btn-text-hover: #000
+}
+
+.btn--text {
+  --btn-text: #000;
+  --btn-text-hover: #000
+}
+
+.btn--large {
+  max-width:100%;
+  --btn-top: 16px;
+  --btn-left: 22px
+}
+
+.btn--large {
+  --btn-top: 12px;
+  --btn-left: 18px
+}
+
+.btn--small {
+  --btn-top: 7px;
+  --btn-left: 12px
+}
+
+.btn--text {
+  --btn-top: 0;
+  --btn-left: 0;
+  --btn-radius: 0;
+  --btn-border: transparent;
+  --btn-border-hover: transparent;
+  --btn-bg: transparent;
+  width:auto;
+  max-width:none;
+  display:inline-block
+}
+
+.btn--half {
+  margin:0;
+  min-width:50%
+}
+
+.btn--half {
+  width:100%
+}
+
+/* ============================================================================
+   3. GRID SYSTEM
+============================================================================ */
+
+.grid {
+  display:grid;
+  gap:var(--gap);
+  grid-template-columns:repeat(var(--columns),minmax(0,1fr))
+}
+
+.grid {
+  padding-top:1px;
+  padding-right:1px
+}
+
+.grid {
+  --columns: var(--COLUMNS)
+}
+
+.grid {
+  --columns: var(--COLUMNS-WIDESCREEN, var(--COLUMNS))
+}
+
+.grid {
+  --columns: var(--COLUMNS-MEDIUM)
+}
+
+.grid {
+  --columns: var(--COLUMNS-SMALL)
+}
+
+.grid {
+  --columns: var(--COLUMNS-MOBILE)
+}
+
+.grid--1 {
+  --columns: 1
+}
+
+.grid--2 {
+  --columns: 2
+}
+
+.grid--3 {
+  --columns: 3
+}
+
+.grid--3 {
+  --columns: 1
+}
+
+.grid--3 {
+  --columns: 1
+}
+
+.grid-outer {
+  position:relative;
+  flex-grow:1;
+  padding:0 var(--outer)
+}
+
+.grid-outer {
+  --outer: 0px;
+  --outer-offset: 0px;
+  --gutter: 0px;
+  --gap: 0px
+}
+
+.grid-outer {
+  padding-top:var(--outer);
+  padding-bottom:var(--outer)
+}
+
+/* ============================================================================
+   4. HEADER & NAVIGATION
+============================================================================ */
+
+.header__wrapper {
+  --bg: var(--COLOR-MENU-BG);
+  --text: var(--COLOR-MENU-LINK);
+  --link: var(--COLOR-MENU-LINK);
+  --link-hover: var(--COLOR-MENU-LINK-HOVER);
+  --text-dark: var(--COLOR-MENU-LINK);
+  --text-light: var(--COLOR-MENU-LINK);
+  --text-transparent: var(--COLOR-MENU-TRANSPARENT);
+  --text-transparent-hover: var(--COLOR-MENU-TRANSPARENT-HOVER);
+  --highlight: var(--text);
+  position:relative;
+  transition:top .2s linear
+}
+
+.header__wrapper {
+  --text-transparent: var(--COLOR-MENU-LINK);
+  --text-transparent-hover: var(--COLOR-MENU-LINK-HOVER)
+}
+
+.header__desktop__upper {
+  --bg: var(--COLOR-HEADER-BG);
+  --text: var(--COLOR-HEADER-LINK);
+  --link: var(--COLOR-HEADER-LINK);
+  --link-hover: var(--COLOR-HEADER-LINK-HOVER);
+  color:var(--text)
+}
+
+.header__desktop__lower {
+  color:var(--text)
+}
+
+.header__mobile {
+  --bg: var(--COLOR-HEADER-BG);
+  --text: var(--COLOR-HEADER-LINK);
+  --link: var(--COLOR-HEADER-LINK);
+  --link-hover: var(--COLOR-HEADER-LINK-HOVER);
+  color:var(--text);
+  display:grid;
+  min-height:42px;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px
+}
+
+.header__mobile__bottom {
+  --bg: var(--COLOR-MENU-BG);
+  --text: var(--COLOR-MENU-LINK);
+  --link: var(--COLOR-MENU-LINK);
+  --link-hover: var(--COLOR-MENU-LINK-HOVER);
+  grid-column:span 3;
+  margin:0 var(--outer-offset);
+  background-color:var(--bg);
+  color:var(--text)
+}
+
+.header__mobile__bottom {
+  display:none
+}
+
+.header__mobile__bottom {
+  border-top:1px solid var(--border)
+}
+
+.header__mobile__nav {
+  position:relative;
+  transition:opacity .2s ease .1s,visibility .3s
+}
+
+.header__mobile__nav__scroller {
+  display:flex;
+  justify-content:space-between;
+  overflow:hidden;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  scroll-snap-type:x mandatory;
+  scroll-padding:calc(var(--outer) - var(--inner));
+  padding-left:calc(var(--outer) - var(--inner));
+  scrollbar-width:none;
+  -ms-overflow-style:none
+}
+
+.header__backfill {
+  visibility:hidden;
+  z-index:-1;
+  position:relative;
+  height:var(--header-height)
+}
+
+.header__logo {
+  margin:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px
+}
+
+.header__logo__link {
+  --logo-width: var(--logo-width-mobile);
+  --link: var(--text);
+  --link-hover: var(--text);
+  width:var(--logo-width);
+  display:block;
+  text-decoration:none;
+  position:relative;
+  max-width:calc(100vw - 202px - var(--scrollbar-width))
+}
+
+.header__logo__link {
+  --logo-width: var(--logo-width-desktop)
+}
+
+.header__logo__text {
+  font-family:var(--FONT-STACK-NAV);
+  font-style:var(--FONT-STYLE-NAV);
+  font-weight:var(--FONT-WEIGHT-NAV-BOLD);
+  letter-spacing:var(--LETTER-SPACING-NAV);
+  font-size:calc(var(--font-4) * var(--FONT-ADJUST-NAV));
+  height:50px;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  padding:1em 0;
+  text-transform:uppercase;
+  letter-spacing:.12em
+}
+
+.header__logo__text--long {
+  font-size:calc(var(--font-3) * var(--FONT-ADJUST-NAV))
+}
+
+.header__logo__text--break {
+  word-break:break-all
+}
+
+.header__mobile__right {
+  display:flex;
+  min-height:inherit
+}
+
+.header__mobile__right {
+  margin-right:-9px
+}
+
+.header__mobile__right {
+  margin-right:-11px
+}
+
+/* ============================================================================
+   5. PRODUCT COMPONENTS
+============================================================================ */
+
+.product__title {
+  font-weight:700;
+  font-size:36px;
+  line-height:120%;
+  letter-spacing:-1px;
+  vertical-align:middle;
+  text-transform:uppercase
+}
+
+.product__price--off {
+  --padding-vertical: 4px
+}
+
+.product__price--off {
+  background:linear-gradient(90deg,#00c99e,#00b84f)!important;
+  border-radius:5px!important;
+  display:flex;
+  align-items:center;
+  gap:4px;
+  font-size:12px!important;
+  font-weight:700!important
+}
+
+.product__price--strike {
+  color:#0006!important
+}
+
+.product__price {
+  padding-top:0;
+  padding-bottom:0;
+  font-size:24px;
+  font-weight:500
+}
+
+.product__price {
+  font-size:calc(1rem * var(--FONT-ADJUST-BODY));
+  font-weight:var(--FONT-WEIGHT-BODY)
+}
+
+.product__price--sale {
+  color:red
+}
+
+.product__submit__add {
+  background-color:transparent!important;
+  border-radius:300px
+}
+
+.product__price--strike {
+  color:var(--text-light)!important
+}
+
+.product__subheading {
+  font-size:19px;
+  font-weight:400
+}
+
+.product__title {
+  margin-top:0
+}
+
+.product__thumbs {
+  margin-bottom:0
+}
+
+.product__title {
+  font-size:28px
+}
+
+.product__selectors {
+  display:none
+}
+
+.product__block--lines {
+  padding-top:calc(var(--form-margin) / 2);
+  padding-bottom:calc(var(--form-margin) / 2);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border)
+}
+
+.product__block--lines {
+  border-top:0;
+  padding-top:0
+}
+
+.product__page {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr))
+}
+
+.product__page {
+  grid-template-columns:37.5% 50%;
+  gap:var(--gap);
+  justify-content:flex-end
+}
+
+.product__page {
+  grid-template-columns:repeat(2,minmax(0,1fr))
+}
+
+.product__wrapper {
+  margin:0 var(--outer)
+}
+
+/* ============================================================================
+   6. ANIMATIONS (KEYFRAMES)
+============================================================================ */
+
+@keyframes fadeIn {
+  0% {
+  opacity:0}
+
+@keyframes fadeOut {
+  0% {
+  opacity:1}
+
+@keyframes slideInUp {
+  0% {
+  opacity:0;
+  transform:none}
+
+@keyframes slideInLeft {
+  0% {
+  opacity:0;
+  transform:none;
+  visibility:hidden}
+
+@keyframes slideInRight {
+  0% {
+  opacity:0;
+  transform:none;
+  visibility:hidden}
+
+@keyframes heroFade {
+  0% {
+  opacity:.001;
+  transform:translateY(15px)}
+
+@keyframes pulseDot {
+  0% {
+  transform:scale(0);
+  opacity:0}
+
+@keyframes shimmer {
+  0% {
+  transform:translate(-100%)}
+
+/* ============================================================================
+   7. RESPONSIVE BREAKPOINTS (Examples)
+============================================================================ */
+
+/* Mobile First */
+@media only screen and (max-width: 749px) {
+  /* Mobile styles */
+}
+
+/* Tablet and up */
+@media only screen and (min-width: 750px) {
+  /* Tablet styles */
+}
+
+/* Desktop */
+@media only screen and (min-width: 990px) {
+  /* Desktop styles */
+}
+
+/* Large Desktop */
+@media only screen and (min-width: 1400px) {
+  /* Large desktop styles */
+}
+
+/* Hover capable devices */
+@media (hover: hover) {
+  /* Hover effects */
+}
+

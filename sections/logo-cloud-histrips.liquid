@@ -1,0 +1,309 @@
+<style>
+  @font-face {
+    font-family: Archivo;
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    src: url("https://fonts.shopifycdn.com/archivo/archivo_n6.woff2") format("woff2");
+  }
+
+  .scrolling-logo-cloud_{{ section.id }} {
+    margin-top: {{ section.settings.margin_top }}px;
+  }
+
+  .scrolling-logo-cloud-title-{{ section.id }} {
+    width: 100%;
+    margin: 0px;
+    text-align: center;
+    padding: 0 15px;
+    font-size: 21px;
+    color: {{ section.settings.title_color }};
+    font-family: {{ section.settings.title_font }}, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  .scrolling-logo-cloud_placeholder {
+    width: 100%;
+  }
+
+  .scrolling-logo-cloud_{{ section.id }} .slide-{{ section.id }} {
+    display: block;
+    flex: 0 0 {{ section.settings.slide_width_mobile }}px;
+    width: 100%;
+  }
+
+  .scrolling-logo-cloud_{{ section.id }} .slide-{{ section.id }} img,
+  .scrolling-logo-cloud_{{ section.id }} .slide-{{ section.id }} svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .marquee-horizontal-{{ section.id }} {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    animation: marquee-horizontal-{{ section.id }} {{ section.settings.animation_duration }}s linear infinite;
+  }
+
+  .track-horizontal-{{ section.id }} {
+    display: inline-flex;
+    gap: {{ section.settings.gap_mobile }}px;
+    padding-left: {{ section.settings.gap_mobile }}px;
+    width: calc(({{ section.settings.slide_width_mobile }}px * {{ section.blocks.size }}) + ({{ section.settings.gap_mobile }}px * {{ section.blocks.size }}));
+  }
+
+  @keyframes marquee-horizontal-{{ section.id }} {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .scrolling-logo-cloud-title-{{ section.id }} {
+      font-size: 28px;
+    }
+
+    .scrolling-logo-cloud_{{ section.id }} .slide-{{ section.id }} {
+      flex: 0 0 {{ section.settings.slide_width_desktop }}px;
+      width: 100%;
+    }
+
+    .track-horizontal-{{ section.id }} {
+      padding-left: {{ section.settings.gap_desktop }}px;
+      width: calc(({{ section.settings.slide_width_desktop }}px * {{ section.blocks.size }}) + ({{ section.settings.gap_desktop }}px * {{ section.blocks.size }}));
+      gap: {{ section.settings.gap_desktop }}px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .scrolling-logo-cloud_{{ section.id }} {
+      padding: 0 15px;
+    }
+  }
+</style>
+
+<section
+  class="section-{{ section.id }}-settings"
+  data-section-id="{{ section.id }}"
+  style="
+    --pt: {{ section.settings.padding_top_mobile }}px;
+    --pt-desktop: {{ section.settings.padding_top_desktop }}px;
+    --pb: {{ section.settings.padding_bottom_mobile }}px;
+    --pb-desktop: {{ section.settings.padding_bottom_desktop }}px;
+    background: {{ section.settings.background_color }};
+  "
+>
+  <div id="ss-scrolling-logo-cloud" style="padding-top: var(--pt); padding-bottom: var(--pb);">
+    {% if section.settings.title != blank %}
+      <h2 class="scrolling-logo-cloud-title-{{ section.id }}">
+        {{ section.settings.title }}
+      </h2>
+    {% endif %}
+
+    <div class="scrolling-logo-cloud scrolling-logo-cloud_{{ section.id }}">
+      <div class="marquee-horizontal marquee-horizontal-{{ section.id }}">
+        <div class="track-horizontal track-horizontal-{{ section.id }}">
+          {% for block in section.blocks %}
+            <div class="slide slide-{{ section.id }}" {{ block.shopify_attributes }}>
+              {% if block.settings.image != blank %}
+                {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', alt: block.settings.alt_text }}
+              {% else %}
+                <div class="scrolling-logo-cloud_placeholder">
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+        <div class="track-horizontal track-horizontal-{{ section.id }}" aria-hidden="true">
+          {% for block in section.blocks %}
+            <div class="slide slide-{{ section.id }}">
+              {% if block.settings.image != blank %}
+                {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', alt: block.settings.alt_text }}
+              {% else %}
+                <div class="scrolling-logo-cloud_placeholder">
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Logo Cloud HiStrips",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "WORN BY THE BEST"
+    },
+    {
+      "type": "select",
+      "id": "title_font",
+      "label": "Title Font",
+      "options": [
+        { "value": "Archivo", "label": "Archivo" },
+        { "value": "HelveticaNowDisplay", "label": "Helvetica Now Display" },
+        { "value": "Inter", "label": "Inter" }
+      ],
+      "default": "Archivo"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#fafafa"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 27
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "slide_width_mobile",
+      "min": 100,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Slide Width (Mobile)",
+      "default": 170
+    },
+    {
+      "type": "range",
+      "id": "slide_width_desktop",
+      "min": 100,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "Slide Width (Desktop)",
+      "default": 200
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Gap (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Gap (Desktop)",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "animation_duration",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "label": "Animation Duration",
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Logo Image"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt Text",
+          "default": "Brand logo"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Logo Cloud HiStrips",
+      "blocks": [
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" }
+      ]
+    }
+  ]
+}
+{% endschema %}

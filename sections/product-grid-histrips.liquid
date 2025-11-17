@@ -1,0 +1,174 @@
+<section class="index-products section-padding" data-section-id="{{ section.id }}" data-section-type="product-grid" style="--COLUMNS: {{ section.settings.columns_desktop }}; --COLUMNS-MEDIUM: {{ section.settings.columns_medium }}; --COLUMNS-MOBILE: {{ section.settings.columns_mobile }};">
+  <div class="grid-container wrapper">
+    <div class="grid__items-holder">
+      <div class="grid-outer">
+        <div class="grid grid--mobile-vertical">
+
+          {% if section.settings.collection != blank %}
+            {% assign collection = collections[section.settings.collection] %}
+            {% assign products_to_show = section.settings.products_limit | default: 4 %}
+
+            {% for product in collection.products limit: products_to_show %}
+              <div class="grid-item product-item product-item--centered product-item--outer-text product-item--has-quickbuy">
+
+                <!-- Product Image -->
+                <div class="product-item__image double__image">
+                  <a class="product-link" href="{{ product.url }}">
+                    <div class="product-item__bg" data-product-image-default>
+                      <figure class="image-wrapper lazy-image" style="--aspect-ratio: 1;">
+                        {% if product.featured_image %}
+                          <img src="{{ product.featured_image | image_url: width: 600 }}"
+                               srcset="{{ product.featured_image | image_url: width: 300 }} 300w,
+                                       {{ product.featured_image | image_url: width: 600 }} 600w,
+                                       {{ product.featured_image | image_url: width: 900 }} 900w"
+                               alt="{{ product.featured_image.alt | default: product.title }}"
+                               loading="lazy">
+                        {% else %}
+                          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                        {% endif %}
+                      </figure>
+                    </div>
+
+                    <!-- Hover Image (second product image) -->
+                    {% if product.images[1] %}
+                      <deferred-image class="product-item__bg__under">
+                        <figure class="image-wrapper lazy-image">
+                          <img src="{{ product.images[1] | image_url: width: 600 }}"
+                               srcset="{{ product.images[1] | image_url: width: 300 }} 300w,
+                                       {{ product.images[1] | image_url: width: 600 }} 600w"
+                               alt="{{ product.images[1].alt | default: product.title }}"
+                               loading="lazy">
+                        </figure>
+                      </deferred-image>
+                    {% endif %}
+                  </a>
+
+                  <!-- Quick Add Button -->
+                  <quick-add-product>
+                    <button class="quick-add__button caps" data-product-handle="{{ product.handle }}">
+                      <span class="btn__text">Quick add</span>
+                      <span class="btn__plus"></span>
+                    </button>
+                  </quick-add-product>
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-information">
+                  <a class="product-link" href="{{ product.url }}">
+                    <p class="product-item__title">
+                      {{ product.title }}
+                    </p>
+                  </a>
+
+                  <!-- Reviews/Stars (placeholder) -->
+                  {% if section.settings.show_reviews %}
+                    <div class="product-item__reviews">
+                      <span class="spr-badge" data-rating="{{ product.metafields.reviews.rating | default: 5 }}">
+                        ★★★★★ ({{ product.metafields.reviews.count | default: 0 }})
+                      </span>
+                    </div>
+                  {% endif %}
+
+                  <!-- Price -->
+                  <div class="product-item__price">
+                    {% if product.compare_at_price > product.price %}
+                      <span class="price price--on-sale">
+                        {{ product.price | money }}
+                      </span>
+                      <span class="price price--compare">
+                        {{ product.compare_at_price | money }}
+                      </span>
+                    {% else %}
+                      <span class="price">
+                        {{ product.price | money }}
+                      </span>
+                    {% endif %}
+                  </div>
+                </div>
+
+              </div>
+            {% endfor %}
+
+          {% else %}
+            <!-- Placeholder products if no collection selected -->
+            {% for i in (1..4) %}
+              <div class="grid-item product-item product-item--centered">
+                <div class="product-item__image">
+                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+                <div class="product-information">
+                  <p class="product-item__title">Sample Product {{ i }}</p>
+                  <div class="product-item__price">
+                    <span class="price">$25.00</span>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Grid HiStrips",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4,
+      "label": "Products to show"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 4,
+      "label": "Columns (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "columns_medium",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 2,
+      "label": "Columns (Tablet)"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "options": [
+        {"value": "1", "label": "1 column"},
+        {"value": "2", "label": "2 columns"}
+      ],
+      "default": "2",
+      "label": "Columns (Mobile)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_reviews",
+      "default": true,
+      "label": "Show product reviews"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Grid HiStrips"
+    }
+  ]
+}
+{% endschema %}

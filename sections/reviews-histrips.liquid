@@ -1,0 +1,434 @@
+<style>
+  .reviews-{{ section.id }} {
+    --pt: {{ section.settings.padding_top_mobile }}px;
+    --pt-desktop: {{ section.settings.padding_top_desktop }}px;
+    --pb: {{ section.settings.padding_bottom_mobile }}px;
+    --pb-desktop: {{ section.settings.padding_bottom_desktop }}px;
+  }
+
+  .reviews-{{ section.id }} .reviews__slider {
+    overflow: hidden;
+    margin-top: {{ section.settings.slider_margin_top }}px;
+  }
+
+  .reviews-{{ section.id }} .reviews__track {
+    display: flex;
+    gap: {{ section.settings.gap_mobile }}px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .reviews-{{ section.id }} .reviews__track {
+      gap: {{ section.settings.gap_desktop }}px;
+    }
+  }
+
+  .reviews-{{ section.id }} .review__item {
+    flex: 0 0 calc(100% - {{ section.settings.gap_mobile }}px);
+    padding: {{ section.settings.card_padding }}px;
+    background: {{ section.settings.card_bg_color }};
+    border-radius: {{ section.settings.card_border_radius }}px;
+    border: 1px solid {{ section.settings.card_border_color }};
+  }
+
+  @media screen and (min-width: 768px) {
+    .reviews-{{ section.id }} .review__item {
+      flex: 0 0 calc({{ section.settings.cards_per_row }}% - {{ section.settings.gap_desktop }}px);
+    }
+  }
+
+  .reviews-{{ section.id }} .review__rating {
+    display: flex;
+    gap: 4px;
+    margin-bottom: {{ section.settings.rating_margin_bottom }}px;
+    color: {{ section.settings.star_color }};
+  }
+
+  .reviews-{{ section.id }} .review__text {
+    font-size: {{ section.settings.text_size }}px;
+    line-height: 1.6;
+    color: {{ section.settings.text_color }};
+    margin-bottom: {{ section.settings.text_margin_bottom }}px;
+  }
+
+  .reviews-{{ section.id }} .review__author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .reviews-{{ section.id }} .review__author__image {
+    width: {{ section.settings.avatar_size }}px;
+    height: {{ section.settings.avatar_size }}px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .reviews-{{ section.id }} .review__author__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .reviews-{{ section.id }} .review__author__name {
+    font-size: {{ section.settings.author_name_size }}px;
+    font-weight: {{ section.settings.author_name_weight }};
+    color: {{ section.settings.author_name_color }};
+  }
+
+  .reviews-{{ section.id }} .review__author__title {
+    font-size: {{ section.settings.author_title_size }}px;
+    color: {{ section.settings.author_title_color }};
+  }
+</style>
+
+<section
+  class="reviews-{{ section.id }} section-padding"
+  data-section-id="{{ section.id }}"
+  style="
+    padding-top: var(--pt);
+    padding-bottom: var(--pb);
+    background: {{ section.settings.background_color }};
+  "
+>
+  <div class="wrapper">
+    {% if section.settings.section_title != blank %}
+      <div class="section__header text-center">
+        <h2 class="heading-size-8">{{ section.settings.section_title }}</h2>
+      </div>
+    {% endif %}
+
+    {% if section.settings.section_description != blank %}
+      <div class="section__description text-center body-size-3">
+        {{ section.settings.section_description }}
+      </div>
+    {% endif %}
+
+    <div class="reviews__slider">
+      <div class="reviews__track">
+        {% for block in section.blocks %}
+          <div class="review__item" {{ block.shopify_attributes }}>
+            {% if block.settings.rating > 0 %}
+              <div class="review__rating">
+                {% for i in (1..5) %}
+                  {% if i <= block.settings.rating %}
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  {% else %}
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {% if block.settings.text != blank %}
+              <div class="review__text">
+                {{ block.settings.text }}
+              </div>
+            {% endif %}
+
+            <div class="review__author">
+              {% if block.settings.author_image != blank %}
+                <div class="review__author__image">
+                  {{ block.settings.author_image | image_url: width: 100 | image_tag: loading: 'lazy', alt: block.settings.author_name }}
+                </div>
+              {% endif %}
+
+              <div class="review__author__info">
+                {% if block.settings.author_name != blank %}
+                  <div class="review__author__name">{{ block.settings.author_name }}</div>
+                {% endif %}
+                {% if block.settings.author_title != blank %}
+                  <div class="review__author__title">{{ block.settings.author_title }}</div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Reviews HiStrips",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "What Our Customers Say"
+    },
+    {
+      "type": "richtext",
+      "id": "section_description",
+      "label": "Section Description"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "slider_margin_top",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Slider Margin Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Gap (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Gap (Desktop)",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "cards_per_row",
+      "min": 20,
+      "max": 50,
+      "step": 5,
+      "unit": "%",
+      "label": "Cards Per Row Width",
+      "default": 33,
+      "info": "33% = 3 cards, 25% = 4 cards"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background",
+      "default": "#fafafa"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card Border Color",
+      "default": "#f0f0f0"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Border Radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 15,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Card Padding",
+      "default": 30
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star Color",
+      "default": "#ffc107"
+    },
+    {
+      "type": "range",
+      "id": "rating_margin_bottom",
+      "min": 10,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Rating Margin Bottom",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#4b4b4b"
+    },
+    {
+      "type": "range",
+      "id": "text_margin_bottom",
+      "min": 15,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Text Margin Bottom",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "avatar_size",
+      "min": 40,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Avatar Size",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "author_name_size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Author Name Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "author_name_weight",
+      "min": 400,
+      "max": 700,
+      "step": 100,
+      "label": "Author Name Weight",
+      "default": 600
+    },
+    {
+      "type": "color",
+      "id": "author_name_color",
+      "label": "Author Name Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "author_title_size",
+      "min": 12,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Author Title Size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "author_title_color",
+      "label": "Author Title Color",
+      "default": "#6d6d6d"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "label": "Rating (Stars)",
+          "default": 5
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Review Text",
+          "default": "<p>This product has been a game-changer for my performance!</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "author_image",
+          "label": "Author Image"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "John Doe"
+        },
+        {
+          "type": "text",
+          "id": "author_title",
+          "label": "Author Title",
+          "default": "Professional Athlete"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews HiStrips",
+      "blocks": [
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" }
+      ]
+    }
+  ]
+}
+{% endschema %}

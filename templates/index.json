@@ -1,41 +1,318 @@
 {
   "sections": {
-    "hero": {
-      "type": "hero-athletic",
+    "announcement": {
+      "type": "announcement-bar-histrips",
+      "blocks": {
+        "announcement_1": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>BLACK FRIDAY: 30% OFF + WIN 20,000$</strong></p>"
+          }
+        },
+        "announcement_2": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>30-day</strong> money-back guarantee</p>"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_1",
+        "announcement_2"
+      ],
       "settings": {
-        "title": "Breathe Smarter. Sleep Deeper. Perform Better.",
-        "subtitle": "Premium respiratory strips designed for peak athletic performance",
-        "cta_text": "Shop Now",
-        "cta_link": "/collections/all"
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "bg_color": "#000000",
+        "text_color": "#ffffff",
+        "link_color": "#ffffff",
+        "link_hover_color": "#ffffff",
+        "autoplay_speed": 7000
       }
     },
-    "benefits": {
-      "type": "benefits-athletic",
+    "header": {
+      "type": "header-histrips",
       "settings": {
-        "title": "Why Choose Nova Strips?",
-        "subtitle": "Designed for athletes who demand the best",
-        "benefit_1_title": "Breathe Smarter",
-        "benefit_1_description": "Instantly open nasal passages for up to 30% more airflow during training and competition",
-        "benefit_2_title": "Sleep Deeper",
-        "benefit_2_description": "Reduce snoring and improve sleep quality for better recovery and performance",
-        "benefit_3_title": "Perform Better",
-        "benefit_3_description": "Drug-free performance enhancement trusted by elite athletes worldwide"
+        "logo_width_desktop": 80,
+        "logo_width_mobile": 120,
+        "menu": "main-menu",
+        "sticky_header": true,
+        "highlight_color": "#d02e2e"
       }
     },
-    "featured-products": {
-      "type": "featured-products-athletic",
+    "hero_1": {
+      "type": "hero-secondary-histrips",
       "settings": {
-        "title": "Shop Performance Essentials",
-        "subtitle": "Trusted by elite athletes worldwide",
-        "products_to_show": 4,
-        "show_view_all": true,
-        "view_all_link": "/collections/all"
+        "link": "/collections/all",
+        "aspect_ratio_desktop": 3.5,
+        "aspect_ratio_mobile": 1.27,
+        "lazy_load": false
+      }
+    },
+    "logo_cloud": {
+      "type": "logo-cloud-histrips",
+      "blocks": {
+        "logo_1": {
+          "type": "logo",
+          "settings": {
+            "alt_text": "Brand 1"
+          }
+        },
+        "logo_2": {
+          "type": "logo",
+          "settings": {
+            "alt_text": "Brand 2"
+          }
+        },
+        "logo_3": {
+          "type": "logo",
+          "settings": {
+            "alt_text": "Brand 3"
+          }
+        },
+        "logo_4": {
+          "type": "logo",
+          "settings": {
+            "alt_text": "Brand 4"
+          }
+        },
+        "logo_5": {
+          "type": "logo",
+          "settings": {
+            "alt_text": "Brand 5"
+          }
+        },
+        "logo_6": {
+          "type": "logo",
+          "settings": {
+            "alt_text": "Brand 6"
+          }
+        }
+      },
+      "block_order": [
+        "logo_1",
+        "logo_2",
+        "logo_3",
+        "logo_4",
+        "logo_5",
+        "logo_6"
+      ],
+      "settings": {
+        "title": "WORN BY THE BEST",
+        "title_font": "Archivo",
+        "title_color": "#121212",
+        "background_color": "#fafafa",
+        "padding_top_mobile": 27,
+        "padding_top_desktop": 36,
+        "padding_bottom_mobile": 0,
+        "padding_bottom_desktop": 0,
+        "margin_top": 14,
+        "slide_width_mobile": 170,
+        "slide_width_desktop": 200,
+        "gap_mobile": 20,
+        "gap_desktop": 30,
+        "animation_duration": 30
+      }
+    },
+    "product_grid": {
+      "type": "product-grid-histrips",
+      "settings": {
+        "collection": "all",
+        "products_limit": 8,
+        "columns_desktop": 4,
+        "columns_medium": 2,
+        "columns_mobile": 2,
+        "show_reviews": true
+      }
+    },
+    "hero_2": {
+      "type": "hero-secondary-histrips",
+      "settings": {
+        "aspect_ratio_desktop": 3.5,
+        "aspect_ratio_mobile": 1.27,
+        "lazy_load": true
+      }
+    },
+    "features": {
+      "type": "features-histrips",
+      "blocks": {
+        "feature_1": {
+          "type": "feature",
+          "settings": {
+            "title": "Premium Quality",
+            "text": "<p>Made with the highest quality materials for maximum durability.</p>"
+          }
+        },
+        "feature_2": {
+          "type": "feature",
+          "settings": {
+            "title": "Enhanced Performance",
+            "text": "<p>Designed to boost your athletic performance and endurance.</p>"
+          }
+        },
+        "feature_3": {
+          "type": "feature",
+          "settings": {
+            "title": "Hypoallergenic",
+            "text": "<p>Safe for sensitive skin with our hypoallergenic adhesive.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_1",
+        "feature_2",
+        "feature_3"
+      ],
+      "settings": {
+        "section_title": "",
+        "background_color": "#fafafa",
+        "padding_top_mobile": 40,
+        "padding_top_desktop": 60,
+        "padding_bottom_mobile": 40,
+        "padding_bottom_desktop": 60,
+        "columns_mobile": 1,
+        "columns_desktop": 3,
+        "gap_mobile": 30,
+        "gap_desktop": 40,
+        "text_align": "center"
+      }
+    },
+    "hero_3": {
+      "type": "hero-secondary-histrips",
+      "settings": {
+        "aspect_ratio_desktop": 3.5,
+        "aspect_ratio_mobile": 1.27,
+        "lazy_load": true
+      }
+    },
+    "reviews": {
+      "type": "reviews-histrips",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "<p>These strips have completely transformed my training. I can breathe better and perform at my peak!</p>",
+            "author_name": "Sarah Johnson",
+            "author_title": "Professional Runner"
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "<p>Game changer for my workouts. The adhesive stays put even during intense sessions.</p>",
+            "author_name": "Mike Chen",
+            "author_title": "CrossFit Athlete"
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "<p>Best nasal strips I've ever used. Comfortable and effective throughout the night.</p>",
+            "author_name": "Emma Davis",
+            "author_title": "Triathlete"
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3"
+      ],
+      "settings": {
+        "section_title": "What Our Customers Say",
+        "background_color": "#ffffff",
+        "padding_top_mobile": 40,
+        "padding_top_desktop": 60,
+        "padding_bottom_mobile": 40,
+        "padding_bottom_desktop": 60
+      }
+    },
+    "rich_text": {
+      "type": "rich-text-histrips",
+      "settings": {
+        "title": "HiStrips Inside",
+        "title_size": "heading-size-8",
+        "text": "<p>More than just a simple bandaid. Designed with the strongest physical action layer and stickiest hypoallergenic adhesive in the market for maximum durability & comfort.</p>",
+        "text_size": "body-size-3",
+        "text_align": "center",
+        "background_color": "#fafafa",
+        "padding_top_mobile": 40,
+        "padding_top_desktop": 50,
+        "padding_bottom_mobile": 0,
+        "padding_bottom_desktop": 0,
+        "block_padding_bottom": 26
+      }
+    },
+    "footer": {
+      "type": "footer-histrips",
+      "blocks": {
+        "footer_menu_1": {
+          "type": "menu",
+          "settings": {
+            "title": "Shop",
+            "menu": "footer"
+          }
+        },
+        "footer_menu_2": {
+          "type": "menu",
+          "settings": {
+            "title": "Support",
+            "menu": "footer"
+          }
+        },
+        "footer_text": {
+          "type": "text",
+          "settings": {
+            "title": "About HiStrips",
+            "text": "<p>HiStrips offers the ultimate performance solution for top athletes, designed to boost endurance and enhance recovery.</p>"
+          }
+        },
+        "footer_newsletter": {
+          "type": "newsletter",
+          "settings": {
+            "title": "Subscribe to our newsletter",
+            "text": "<p>Get the latest updates on products and exclusive offers.</p>",
+            "placeholder": "Enter your email",
+            "button_label": "Subscribe"
+          }
+        }
+      },
+      "block_order": [
+        "footer_menu_1",
+        "footer_menu_2",
+        "footer_text",
+        "footer_newsletter"
+      ],
+      "settings": {
+        "bg_color": "#000000",
+        "text_color": "#ffffff",
+        "link_color": "#ffffff",
+        "link_hover_color": "rgba(255, 255, 255, 0.7)",
+        "border_color": "#2e2e2e",
+        "button_bg_color": "#696969",
+        "button_text_color": "#ffffff",
+        "padding_top": 80,
+        "padding_bottom": 40,
+        "columns_desktop": 4,
+        "copyright_text": "© 2024 HiStrips. All rights reserved.",
+        "show_social": true
       }
     }
   },
   "order": [
-    "hero",
-    "benefits",
-    "featured-products"
+    "announcement",
+    "header",
+    "hero_1",
+    "logo_cloud",
+    "product_grid",
+    "hero_2",
+    "features",
+    "hero_3",
+    "reviews",
+    "rich_text",
+    "footer"
   ]
 }

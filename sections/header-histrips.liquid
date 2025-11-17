@@ -1,0 +1,202 @@
+<style>
+  :root {
+    --HEADER-HEIGHT: 77px;
+    --HEADER-HEIGHT-MEDIUM: 66.0px;
+    --HEADER-HEIGHT-MOBILE: 60.0px;
+    --icon-add-cart: var(--ICON-ADD-BAG);
+  }
+
+  .theme__header {
+    --PT: 15px;
+    --PB: 15px;
+  }
+
+  .header__logo__link {
+    --logo-padding: 31.32832080200501%;
+    --logo-width-desktop: {{ section.settings.logo_width_desktop }}px;
+    --logo-width-mobile: {{ section.settings.logo_width_mobile }}px;
+  }
+</style>
+
+<div
+  class="header__wrapper"
+  data-header-wrapper=""
+  {% if section.settings.sticky_header %}data-header-sticky=""{% endif %}
+  data-header-style="logo_center_menu_left"
+  data-section-id="{{ section.id }}"
+  data-section-type="header"
+  style="--highlight: {{ section.settings.highlight_color }};"
+>
+  <header class="theme__header" role="banner" data-header-height="" data-aos="fade">
+    <div class="section-padding">
+      {%- comment -%} Mobile Header {%- endcomment -%}
+      <div class="header__mobile">
+        <div class="header__mobile__left">
+          <div class="header__mobile__button">
+            <button class="js-open-mobile-drawer header__mobile__hamburger" aria-label="{{ 'general.accessibility.show_menu' | t }}">
+              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-menu" viewBox="0 0 24 24">
+                <path d="M3 5h18M3 12h18M3 19h18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {%- comment -%} Mobile Logo {%- endcomment -%}
+        <div class="header__logo header__logo--image">
+          <a class="header__logo__link" href="{{ routes.root_url }}" style="width: var(--logo-width-mobile);">
+            {% if section.settings.logo != blank %}
+              <figure class="image-wrapper lazy-image" style="padding-bottom: var(--logo-padding);">
+                {{ section.settings.logo | image_url: width: 400 | image_tag: loading: 'eager', alt: shop.name }}
+              </figure>
+            {% else %}
+              <span class="header__logo__text">{{ shop.name }}</span>
+            {% endif %}
+          </a>
+        </div>
+
+        <div class="header__mobile__right">
+          {%- comment -%} Search Icon {%- endcomment -%}
+          <div class="header__desktop__button header__desktop__button--search">
+            <button class="js-open-search header__search__button" aria-label="{{ 'general.accessibility.show_search' | t }}">
+              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-search" viewBox="0 0 24 24">
+                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </button>
+          </div>
+
+          {%- comment -%} Cart Icon {%- endcomment -%}
+          <div class="header__desktop__button header__desktop__button--cart">
+            <a class="header__cart__button" href="{{ routes.cart_url }}" aria-label="{{ 'cart.general.title' | t }}">
+              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-bag" viewBox="0 0 24 24">
+                <path d="M6 6h15l-1.5 9H7.5L6 6zm0 0l-.75-3H3m6 6v3m6-3v3m-9 6h12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              <span class="header__cart__count" data-cart-count="">{{ cart.item_count }}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} Desktop Header {%- endcomment -%}
+      <div class="header__desktop">
+        {%- comment -%} Left Navigation {%- endcomment -%}
+        <div class="header__desktop__upper__left">
+          <nav class="header__nav" role="navigation">
+            <ul class="header__nav__list">
+              {% for link in section.settings.menu.links %}
+                <li class="header__nav__item">
+                  <a class="header__nav__link" href="{{ link.url }}">
+                    {{ link.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
+
+        {%- comment -%} Center Logo {%- endcomment -%}
+        <div class="header__logo header__logo--image">
+          <a class="header__logo__link" href="{{ routes.root_url }}" style="width: var(--logo-width-desktop);">
+            {% if section.settings.logo != blank %}
+              <figure class="image-wrapper lazy-image" style="padding-bottom: var(--logo-padding);">
+                {{ section.settings.logo | image_url: width: 400 | image_tag: loading: 'eager', alt: shop.name }}
+              </figure>
+            {% else %}
+              <span class="header__logo__text">{{ shop.name }}</span>
+            {% endif %}
+          </a>
+        </div>
+
+        {%- comment -%} Right Icons {%- endcomment -%}
+        <div class="header__desktop__upper__right">
+          <div class="header__desktop__buttons">
+            {%- comment -%} Search {%- endcomment -%}
+            <div class="header__desktop__button header__desktop__button--search">
+              <button class="js-open-search header__search__button" aria-label="{{ 'general.accessibility.show_search' | t }}">
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-search" viewBox="0 0 24 24">
+                  <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </div>
+
+            {%- comment -%} Account {%- endcomment -%}
+            {% if shop.customer_accounts_enabled %}
+              <div class="header__desktop__button header__desktop__button--account">
+                <a class="header__account__button" href="{{ routes.account_url }}" aria-label="{{ 'customer.account.title' | t }}">
+                  <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-account" viewBox="0 0 24 24">
+                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </a>
+              </div>
+            {% endif %}
+
+            {%- comment -%} Cart {%- endcomment -%}
+            <div class="header__desktop__button header__desktop__button--cart">
+              <a class="header__cart__button" href="{{ routes.cart_url }}" aria-label="{{ 'cart.general.title' | t }}">
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-bag" viewBox="0 0 24 24">
+                  <path d="M6 6h15l-1.5 9H7.5L6 6zm0 0l-.75-3H3m6 6v3m6-3v3m-9 6h12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                <span class="header__cart__count" data-cart-count="">{{ cart.item_count }}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+{% schema %}
+{
+  "name": "Header HiStrips",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width_desktop",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo Width Desktop",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "logo_width_mobile",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo Width Mobile",
+      "default": 120
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Main Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_header",
+      "label": "Enable Sticky Header",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight Color",
+      "default": "#d02e2e"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header HiStrips"
+    }
+  ]
+}
+{% endschema %}

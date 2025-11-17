@@ -1,0 +1,85 @@
+<div class="index-hero wide-image" data-section-id="{{ section.id }}" data-section-type="hero">
+  <div class="hero__wrapper frame wrapper--full">
+    {% if section.settings.hero_link %}
+      <a class="hero__images frame__item" href="{{ section.settings.hero_link }}">
+    {% else %}
+      <div class="hero__images frame__item">
+    {% endif %}
+      <div class="hero__split-image">
+        <div class="image__hero__frame image-height">
+          {% if section.settings.hero_image_desktop or section.settings.hero_image_mobile %}
+            <picture>
+              {% if section.settings.hero_image_desktop %}
+                <source media="(min-width: 750px)"
+                        srcset="{{ section.settings.hero_image_desktop | image_url: width: 1920 }} 1920w,
+                                {{ section.settings.hero_image_desktop | image_url: width: 1400 }} 1400w,
+                                {{ section.settings.hero_image_desktop | image_url: width: 1200 }} 1200w">
+              {% endif %}
+              {% if section.settings.hero_image_mobile %}
+                <source media="(max-width: 749px)"
+                        srcset="{{ section.settings.hero_image_mobile | image_url: width: 800 }} 800w,
+                                {{ section.settings.hero_image_mobile | image_url: width: 600 }} 600w">
+              {% endif %}
+              <img src="{{ section.settings.hero_image_desktop | default: section.settings.hero_image_mobile | image_url: width: 1920 }}"
+                   alt="{{ section.settings.hero_image_alt | default: shop.name }}"
+                   loading="eager"
+                   width="1920"
+                   height="{{ 1920 | divided_by: section.settings.aspect_ratio_desktop | round }}">
+            </picture>
+          {% else %}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        </div>
+      </div>
+    {% if section.settings.hero_link %}
+      </a>
+    {% else %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero HiStrips",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image_desktop",
+      "label": "Hero Image (Desktop)",
+      "info": "Recommended: 1920x549px (3.5:1 ratio)"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image_mobile",
+      "label": "Hero Image (Mobile)",
+      "info": "Recommended: 750x590px (1.27:1 ratio)"
+    },
+    {
+      "type": "text",
+      "id": "hero_image_alt",
+      "label": "Image Alt Text"
+    },
+    {
+      "type": "url",
+      "id": "hero_link",
+      "label": "Hero Link",
+      "info": "Where should the hero image link to?"
+    },
+    {
+      "type": "range",
+      "id": "aspect_ratio_desktop",
+      "min": 1,
+      "max": 5,
+      "step": 0.1,
+      "default": 3.5,
+      "label": "Desktop Aspect Ratio"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero HiStrips"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,182 @@
+<style>
+  .rich-text-{{ section.id }} {
+    --pt: {{ section.settings.padding_top_mobile }}px;
+    --pt-desktop: {{ section.settings.padding_top_desktop }}px;
+    --pb: {{ section.settings.padding_bottom_mobile }}px;
+    --pb-desktop: {{ section.settings.padding_bottom_desktop }}px;
+    --block-padding-bottom: {{ section.settings.block_padding_bottom }}px;
+  }
+</style>
+
+<section
+  class="index-rte section-padding rich-text-{{ section.id }}"
+  data-section-type="rich-text"
+  data-section-id="{{ section.id }}"
+  style="
+    padding-top: var(--pt);
+    padding-bottom: var(--pb);
+    background: {{ section.settings.background_color }};
+  "
+>
+  <div class="hero__content__wrapper text-{{ section.settings.text_align }} wrapper">
+    <div class="hero__content hero__content--compact">
+      {% if section.settings.title != blank %}
+        <h2
+          class="hero__title {{ section.settings.title_size }} block-padding"
+          data-aos="hero"
+          style="--block-padding-bottom: 16px;"
+        >
+          {{ section.settings.title }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <div
+          class="hero__rte {{ section.settings.text_size }} font-body block-padding"
+          data-aos="hero"
+          style="--block-padding-bottom: var(--block-padding-bottom);"
+        >
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+        <div class="hero__button" data-aos="hero">
+          <a href="{{ section.settings.button_link }}" class="btn btn--primary">
+            {{ section.settings.button_label }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Rich Text HiStrips",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "HiStrips Inside"
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "label": "Title Size",
+      "options": [
+        { "value": "heading-size-6", "label": "Small" },
+        { "value": "heading-size-7", "label": "Medium" },
+        { "value": "heading-size-8", "label": "Large" },
+        { "value": "heading-size-9", "label": "Extra Large" }
+      ],
+      "default": "heading-size-8"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>More than just a simple bandaid. Designed with the strongest physical action layer and stickiest hypoallergenic adhesive in the market for maximum durability & comfort.</p>"
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": "Text Size",
+      "options": [
+        { "value": "body-size-1", "label": "Small" },
+        { "value": "body-size-2", "label": "Medium" },
+        { "value": "body-size-3", "label": "Large" },
+        { "value": "body-size-4", "label": "Extra Large" }
+      ],
+      "default": "body-size-3"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#fafafa"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "block_padding_bottom",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Block Padding Bottom",
+      "default": 26
+    },
+    {
+      "type": "header",
+      "content": "Button (Optional)"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rich Text HiStrips"
+    }
+  ]
+}
+{% endschema %}
