@@ -1,15 +1,64 @@
 {
   "type": "footer",
-  "name": "t:general.footer",
+  "name": "Footer",
   "sections": {
-    "footer-athletic": {
-      "type": "footer-athletic",
+    "footer": {
+      "type": "footer-histrips",
+      "blocks": {
+        "footer_menu_1": {
+          "type": "menu",
+          "settings": {
+            "title": "Shop",
+            "menu": "footer"
+          }
+        },
+        "footer_menu_2": {
+          "type": "menu",
+          "settings": {
+            "title": "Support",
+            "menu": "footer"
+          }
+        },
+        "footer_text": {
+          "type": "text",
+          "settings": {
+            "title": "About NovaStrips",
+            "text": "<p>NovaStrips offers the ultimate performance solution for top athletes, designed to boost endurance and enhance recovery.</p>"
+          }
+        },
+        "footer_newsletter": {
+          "type": "newsletter",
+          "settings": {
+            "title": "Subscribe to our newsletter",
+            "text": "<p>Get the latest updates on products and exclusive offers.</p>",
+            "placeholder": "Enter your email",
+            "button_label": "Subscribe"
+          }
+        }
+      },
+      "block_order": [
+        "footer_menu_1",
+        "footer_menu_2",
+        "footer_text",
+        "footer_newsletter"
+      ],
       "settings": {
-        "footer_description": "Breathe smarter. Sleep deeper. Perform better."
+        "bg_color": "#000000",
+        "text_color": "#ffffff",
+        "link_color": "#ffffff",
+        "link_hover_color": "rgba(255, 255, 255, 0.7)",
+        "border_color": "#2e2e2e",
+        "button_bg_color": "#696969",
+        "button_text_color": "#ffffff",
+        "padding_top": 80,
+        "padding_bottom": 40,
+        "columns_desktop": 4,
+        "copyright_text": "© 2025 NovaStrips. All rights reserved.",
+        "show_social": true
       }
     }
   },
   "order": [
-    "footer-athletic"
+    "footer"
   ]
 }
