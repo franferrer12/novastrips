@@ -1,20 +1,27 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "main": {
-      "type": "hello-world",
-      "settings": {}
+    "hero": {
+      "type": "hero-luxury",
+      "settings": {
+        "title": "Transform Your Performance",
+        "subtitle": "Breathe smarter. Sleep deeper. Perform better.",
+        "cta_text": "Shop Now",
+        "cta_link": "/collections/all"
+      }
+    },
+    "featured-products": {
+      "type": "featured-products-luxury",
+      "settings": {
+        "title": "Featured Products",
+        "subtitle": "Discover our bestselling respiratory strips",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "view_all_link": "/collections/all"
+      }
     }
   },
   "order": [
-    "main"
+    "hero",
+    "featured-products"
   ]
 }

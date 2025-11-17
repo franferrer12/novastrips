@@ -6,6 +6,13 @@
       alt="{{ section.settings.title }}"
       loading="eager"
     >
+  {% else %}
+    <img
+      class="hero-luxury__image"
+      src="{{ 'hero.png' | asset_url }}"
+      alt="{{ section.settings.title }}"
+      loading="eager"
+    >
   {% endif %}
 
   <div class="hero-luxury__overlay"></div>
