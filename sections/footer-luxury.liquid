@@ -1,0 +1,60 @@
+<footer class="footer-luxury">
+  <div class="footer-luxury__container">
+    <div class="footer-luxury__grid">
+      <div class="footer-luxury__column">
+        <h3>NOVA STRIPS</h3>
+        <p style="color: var(--color-gray-light); margin-top: var(--spacing-sm);">
+          {{ section.settings.footer_description | default: "Premium respiratory strips for enhanced performance and better sleep." }}
+        </p>
+      </div>
+
+      <div class="footer-luxury__column">
+        <h3>Shop</h3>
+        <ul class="footer-luxury__links">
+          <li><a href="/collections/all">All Products</a></li>
+          <li><a href="/collections/bestsellers">Bestsellers</a></li>
+          <li><a href="/collections/new-arrivals">New Arrivals</a></li>
+          <li><a href="/collections/bundles">Bundles</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-luxury__column">
+        <h3>Support</h3>
+        <ul class="footer-luxury__links">
+          <li><a href="/pages/about">About Us</a></li>
+          <li><a href="/pages/contact">Contact</a></li>
+          <li><a href="/pages/faq">FAQ</a></li>
+          <li><a href="/pages/shipping">Shipping</a></li>
+          <li><a href="/pages/returns">Returns</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-luxury__column">
+        <h3>Legal</h3>
+        <ul class="footer-luxury__links">
+          <li><a href="/pages/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/pages/terms-of-service">Terms of Service</a></li>
+          <li><a href="/pages/refund-policy">Refund Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-luxury__bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} Nova Strips. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer Luxury",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "footer_description",
+      "label": "Footer Description",
+      "default": "Premium respiratory strips for enhanced performance and better sleep."
+    }
+  ]
+}
+{% endschema %}
