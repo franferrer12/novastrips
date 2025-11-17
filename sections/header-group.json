@@ -2,12 +2,12 @@
   "type": "header",
   "name": "t:general.header",
   "sections": {
-    "header-luxury": {
-      "type": "header-luxury",
+    "header-athletic": {
+      "type": "header-athletic",
       "settings": {}
     }
   },
   "order": [
-    "header-luxury"
+    "header-athletic"
   ]
 }

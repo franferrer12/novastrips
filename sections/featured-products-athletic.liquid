@@ -1,0 +1,152 @@
+<section class="featured-products-athletic">
+  <div class="featured-products-athletic__container">
+    <div class="featured-products-athletic__header">
+      {% if section.settings.title %}
+        <h2 class="featured-products-athletic__title">{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.subtitle %}
+        <p class="featured-products-athletic__subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+
+    <div class="featured-products-athletic__grid">
+      {% if section.settings.collection %}
+        {% assign collection = collections[section.settings.collection] %}
+        {% for product in collection.products limit: section.settings.products_to_show %}
+          <div class="product-card-athletic">
+            <div class="product-card-athletic__image-wrapper">
+              {% if product.featured_image %}
+                <img
+                  class="product-card-athletic__image"
+                  src="{{ product.featured_image | image_url: width: 600 }}"
+                  alt="{{ product.title }}"
+                  loading="lazy"
+                >
+              {% endif %}
+            </div>
+
+            <div class="product-card-athletic__info">
+              <h3 class="product-card-athletic__title">{{ product.title }}</h3>
+
+              {% if product.metafields.reviews.rating.value %}
+                <div class="product-card-athletic__rating">
+                  <span>★★★★★</span>
+                  <span>({{ product.metafields.reviews.rating_count.value | default: 0 }})</span>
+                </div>
+              {% endif %}
+
+              <div class="product-card-athletic__price">
+                <span class="product-card-athletic__price-current">
+                  {{ product.price | money }}
+                </span>
+                {% if product.compare_at_price > product.price %}
+                  <span class="product-card-athletic__price-original">
+                    {{ product.compare_at_price | money }}
+                  </span>
+                {% endif %}
+              </div>
+
+              <button class="product-card-athletic__button" onclick="window.location.href='{{ product.url }}'">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        {% comment %} Placeholder products with real images {% endcomment %}
+        {% assign product_names = "Black Nasal Strips,Athlete Performance Bundle,Sleep Mouth Tape,Premium Nasal Strips" | split: "," %}
+        {% assign product_prices = "29.99,49.99,19.99,34.99" | split: "," %}
+        {% assign product_compare_prices = "39.99,69.99,24.99,44.99" | split: "," %}
+        {% assign product_ratings = "863,542,721,394" | split: "," %}
+
+        {% for i in (1..4) %}
+          {% assign index = i | minus: 1 %}
+          <div class="product-card-athletic">
+            <div class="product-card-athletic__image-wrapper">
+              <img
+                class="product-card-athletic__image"
+                src="{{ 'product-' | append: i | append: '.png' | asset_url }}"
+                alt="{{ product_names[index] }}"
+                loading="lazy"
+              >
+            </div>
+            <div class="product-card-athletic__info">
+              <h3 class="product-card-athletic__title">{{ product_names[index] }}</h3>
+              <div class="product-card-athletic__rating">
+                <span>★★★★★</span>
+                <span>({{ product_ratings[index] }})</span>
+              </div>
+              <div class="product-card-athletic__price">
+                <span class="product-card-athletic__price-current">€{{ product_prices[index] }}</span>
+                <span class="product-card-athletic__price-original">€{{ product_compare_prices[index] }}</span>
+              </div>
+              <button class="product-card-athletic__button">Add to Cart</button>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    {% if section.settings.show_view_all %}
+      <div style="text-align: center; margin-top: var(--spacing-xl);">
+        <a href="{{ section.settings.view_all_link }}" class="hero-athletic__cta">
+          View All Products
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Products Athletic",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Shop Performance Essentials"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "Trusted by elite athletes worldwide"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "label": "Products to show",
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show View All button",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View All Link",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products Athletic"
+    }
+  ]
+}
+{% endschema %}

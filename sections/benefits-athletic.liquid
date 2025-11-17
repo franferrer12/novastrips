@@ -1,0 +1,104 @@
+<section class="benefits-athletic">
+  <div class="benefits-athletic__container">
+    {% if section.settings.title %}
+      <h2 class="benefits-athletic__title">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    {% if section.settings.subtitle %}
+      <p class="benefits-athletic__subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
+
+    <div class="benefits-athletic__grid">
+      <div class="benefits-card">
+        <div class="benefits-card__icon">
+          <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+          </svg>
+        </div>
+        <h3 class="benefits-card__title">{{ section.settings.benefit_1_title }}</h3>
+        <p class="benefits-card__description">{{ section.settings.benefit_1_description }}</p>
+      </div>
+
+      <div class="benefits-card">
+        <div class="benefits-card__icon">
+          <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </div>
+        <h3 class="benefits-card__title">{{ section.settings.benefit_2_title }}</h3>
+        <p class="benefits-card__description">{{ section.settings.benefit_2_description }}</p>
+      </div>
+
+      <div class="benefits-card">
+        <div class="benefits-card__icon">
+          <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        <h3 class="benefits-card__title">{{ section.settings.benefit_3_title }}</h3>
+        <p class="benefits-card__description">{{ section.settings.benefit_3_description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Benefits Athletic",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Why Choose Nova Strips?"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "Designed for athletes who demand the best"
+    },
+    {
+      "type": "text",
+      "id": "benefit_1_title",
+      "label": "Benefit 1 Title",
+      "default": "Breathe Smarter"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_1_description",
+      "label": "Benefit 1 Description",
+      "default": "Instantly open nasal passages for up to 30% more airflow during training and competition"
+    },
+    {
+      "type": "text",
+      "id": "benefit_2_title",
+      "label": "Benefit 2 Title",
+      "default": "Sleep Deeper"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_2_description",
+      "label": "Benefit 2 Description",
+      "default": "Reduce snoring and improve sleep quality for better recovery and performance"
+    },
+    {
+      "type": "text",
+      "id": "benefit_3_title",
+      "label": "Benefit 3 Title",
+      "default": "Perform Better"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_3_description",
+      "label": "Benefit 3 Description",
+      "default": "Drug-free performance enhancement trusted by elite athletes worldwide"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits Athletic"
+    }
+  ]
+}
+{% endschema %}

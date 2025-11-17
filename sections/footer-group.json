@@ -2,14 +2,14 @@
   "type": "footer",
   "name": "t:general.footer",
   "sections": {
-    "footer-luxury": {
-      "type": "footer-luxury",
+    "footer-athletic": {
+      "type": "footer-athletic",
       "settings": {
-        "footer_description": "Premium respiratory strips for enhanced performance and better sleep."
+        "footer_description": "Breathe smarter. Sleep deeper. Perform better."
       }
     }
   },
   "order": [
-    "footer-luxury"
+    "footer-athletic"
   ]
 }

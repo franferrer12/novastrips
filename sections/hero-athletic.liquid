@@ -1,0 +1,80 @@
+<section class="hero-athletic">
+  {% if section.settings.hero_image %}
+    <img
+      class="hero-athletic__image"
+      src="{{ section.settings.hero_image | image_url: width: 1920 }}"
+      alt="{{ section.settings.title }}"
+      loading="eager"
+    >
+  {% else %}
+    <img
+      class="hero-athletic__image"
+      src="{{ 'hero.png' | asset_url }}"
+      alt="{{ section.settings.title }}"
+      loading="eager"
+    >
+  {% endif %}
+
+  <div class="hero-athletic__overlay"></div>
+
+  <div class="hero-athletic__content">
+    {% if section.settings.title %}
+      <h1 class="hero-athletic__title">{{ section.settings.title }}</h1>
+    {% endif %}
+
+    {% if section.settings.subtitle %}
+      <p class="hero-athletic__subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
+
+    {% if section.settings.cta_text and section.settings.cta_link %}
+      <a href="{{ section.settings.cta_link }}" class="hero-athletic__cta">
+        {{ section.settings.cta_text }}
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Athletic",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Breathe Smarter. Sleep Deeper. Perform Better."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Premium respiratory strips designed for peak athletic performance"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button Link",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Athletic"
+    }
+  ]
+}
+{% endschema %}
